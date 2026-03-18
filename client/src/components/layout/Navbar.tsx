@@ -83,6 +83,24 @@ const Navbar = () => {
             sx={{
               color: "#fff",
             }}
+            href="#credenciales"
+          >
+            CREDENCIALES
+          </Button>
+
+           <Button
+            sx={{
+              color: "#fff",
+            }}
+            href="#testimonios"
+          >
+            TESTIMONIOS
+          </Button>
+
+          <Button
+            sx={{
+              color: "#fff",
+            }}
             href="#sobre-mi"
           >
             SOBRE MÍ

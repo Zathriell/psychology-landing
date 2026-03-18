@@ -3,7 +3,7 @@ import familyImage from "../../assets/images/psychologist-family.jpg";
 
 const About = () => {
   return (
-    <Container id="sobre-mi" sx={{ py: 10 }}>
+    <Container id="sobre-mi" sx={{ py: 10, scrollMarginTop: "80px", }}>
 
       <Box
       

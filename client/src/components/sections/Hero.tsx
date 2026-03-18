@@ -11,6 +11,7 @@ const Hero = () => {
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
+        scrollMarginTop: "80px",
 
         /**
          * 👇 Imagen de fondo

@@ -1,76 +1,84 @@
-import axios from "axios";
-import { useState } from "react";
 import {
   Container,
-  TextField,
-  Button,
   Typography,
+  Box,
+  Button,
   Stack,
 } from "@mui/material";
+import WhatsAppIcon from "@mui/icons-material/WhatsApp";
+import EmailIcon from "@mui/icons-material/Email";
+
+// CONFIGURACIÓN
+const PHONE_NUMBER = "505XXXXXXXX";
+const EMAIL = "tuemail@gmail.com";
 
 const Contact = () => {
-
-  const [form, setForm] = useState({
-    name: "",
-    email: "",
-    message: "",
-  });
-
-  const handleChange = (e: any) => {
-    setForm({
-      ...form,
-      [e.target.name]: e.target.value,
-    });
+  const handleWhatsApp = () => {
+    const message =
+      "Hola, vi tu página web y me gustaría agendar una consulta psicológica.";
+    const url = `https://wa.me/${PHONE_NUMBER}?text=${encodeURIComponent(message)}`;
+    window.open(url, "_blank");
   };
 
-  const handleSubmit = async () => {
-
-    try {
-
-      await axios.post("http://localhost:5000/contact", form);
-
-      alert("Mensaje enviado correctamente");
-
-    } catch (error) {
-
-      alert("Error al enviar el mensaje");
-
-    }
+  const handleEmail = () => {
+    const subject = "Consulta psicológica";
+    const body =
+      "Hola,\n\nMe gustaría recibir más información sobre las consultas.\n\nGracias.";
+    const url = `mailto:${EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    window.location.href = url;
   };
 
   return (
-    <Container id="contacto" sx={{ py: 10 }}>
-      <Typography variant="h4" align="center" gutterBottom>
-        Contacto
-      </Typography>
+    <Container id="contacto" sx={{ py: 10, scrollMarginTop: "80px", }}>
+      {/* CONTENIDO CENTRAL */}
+      <Box textAlign="center" maxWidth={600} mx="auto">
+        <Typography variant="h4" fontWeight="bold" gutterBottom>
+          Agenda tu consulta
+        </Typography>
 
-      <Stack spacing={2} maxWidth={500} margin="auto">
+        <Typography variant="body1" color="text.secondary" mb={2}>
+          Agenda tu primera consulta y comienza a trabajar en tu bienestar emocional desde hoy.
+        </Typography>
 
-        <TextField
-          label="Nombre"
-          name="name"
-          onChange={handleChange}
-        />
+        <Typography variant="body2" color="text.secondary" mb={2}>
+          Horario de atención: Lunes a Viernes de 8:00 AM a 5:00 PM
+        </Typography>
 
-        <TextField
-          label="Email"
-          name="email"
-          onChange={handleChange}
-        />
+        {/* BOTONES */}
+        <Stack spacing={2}>
+          {/* WhatsApp */}
+          <Button
+            variant="contained"
+            size="large"
+            startIcon={<WhatsAppIcon />}
+            onClick={handleWhatsApp}
+            sx={{
+              borderRadius: 2,
+              textTransform: "none",
+              backgroundColor: "#25D366",
+              "&:hover": {
+                backgroundColor: "#1ebe5d",
+              },
+            }}
+          >
+            Escribir por WhatsApp
+          </Button>
 
-        <TextField
-          label="Mensaje"
-          name="message"
-          multiline
-          rows={4}
-          onChange={handleChange}
-        />
-
-        <Button variant="contained" onClick={handleSubmit}>
-          Enviar
-        </Button>
-
-      </Stack>
+          {/* Email */}
+          <Button
+            variant="outlined"
+            size="large"
+            startIcon={<EmailIcon />}
+            onClick={handleEmail}
+            sx={{
+              borderRadius: 2,
+              textTransform: "none",
+            }}
+          >
+            Enviar correo electrónico
+          </Button>
+        </Stack>
+      </Box>
     </Container>
   );
 };
