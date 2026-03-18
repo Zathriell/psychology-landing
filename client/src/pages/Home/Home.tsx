@@ -3,6 +3,7 @@ import Services from "../../components/sections/Services";
 import About from "../../components/sections/About";
 import Contact from "../../components/sections/Contact";
 import { Helmet } from "react-helmet-async";
+import WhatsAppButton from "../../components/WhatsAppButton";
 
 const Home = () => {
   return (
@@ -20,10 +21,11 @@ const Home = () => {
           content="psicóloga Managua, terapia ansiedad Managua, terapia depresión Managua, psicólogo Nicaragua"
         />
       </Helmet>
-      
+
       <Hero />
       <Services />
       <About />
+      <WhatsAppButton />
       <Contact />
     </>
   );

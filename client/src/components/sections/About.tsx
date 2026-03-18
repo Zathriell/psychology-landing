@@ -1,4 +1,5 @@
 import { Container, Typography, Box } from "@mui/material";
+import familyImage from "../../assets/images/psychologist-family.jpg";
 
 const About = () => {
   return (
@@ -20,12 +21,13 @@ const About = () => {
         {/* Image Section */}
         <Box
           component="img"
-          src="/psychologist.jpg"
+          src={familyImage}
           alt="Psicóloga"
           sx={{
             width: "100%",
             borderRadius: 2,
             objectFit: "cover",
+            boxShadow: "0 10px 30px rgba(0,0,0,0.1)",
           }}
         />
 
